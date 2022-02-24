@@ -1,0 +1,36 @@
+before:
+  hooks:
+    - go mod download
+builds:
+- id: "apko-build"
+  binary: apko
+  main: ./cmd/apko/main.go
+  env:
+  - CGO_ENABLED=0
+  goarch:
+    - 386
+    - amd64
+    - arm64
+archives:
+- replacements:
+    linux: Linux
+    386: i386
+    amd64: x86_64
+  name_template: "apko_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+  files:
+    - LICENSE
+  wrap_in_directory: true
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
+release:
+  draft: false
+  prerelease: true
+  name_template: "Release {{ .Tag }}"
