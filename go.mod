@@ -8,7 +8,7 @@ require (
 	github.com/google/go-containerregistry v0.8.1-0.20220223122423-dd8d514a9b24
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.3.0
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+	gopkg.in/yaml.v3 v3.0.1
 	sigs.k8s.io/release-utils v0.5.0
 )
 
